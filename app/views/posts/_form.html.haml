@@ -1,0 +1,35 @@
+
+.post.container-fluid
+  = form_for(@post) do |f|
+    - if @post.errors.any?
+      .row#error_explanation
+        .col-md-12
+          %h2
+            = pluralize(@post.errors.count, "error")
+            prohibited this post from being saved:
+          %ul
+            - @post.errors.full_messages.each do |message|
+              %li= message
+    .row
+      .col-md-8
+        = f.text_field :title, class: 'form-control'
+      .col-md-1
+      .col-md-2
+        %label PUBLISH?
+      .col-md-1
+        = f.check_box :published, class: 'form-control'
+    .row.content
+      .col-md-12
+        = f.text_area :content, id: :content, size: "60x12"
+    .row.css.hidden
+      .col-md-12
+        = f.text_area :css, size: "60x12", class: 'form-control'
+    .row.js.hidden
+      .col-md-12
+        = f.text_area :js, size: "60x12", class: 'form-control'
+    .row
+      .col-md-12
+        = f.submit
+  %script{:src => "//tinymce.cachefly.net/4.1/tinymce.min.js"}
+  :javascript
+    tinymce.init({selector:'textarea#content'});

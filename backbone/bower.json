@@ -1,0 +1,26 @@
+{
+  "name": "spablog_backbone",
+  "version": "0.0.0",
+  "authors": [
+    "os6sense <leej@sowhatresearch.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "1.2.0",
+    "underscore": "1.7.0",
+    "jquery": "2.1.4",
+    "ramda": "0.14"
+  },
+  "devDependencies": {
+  }
+}

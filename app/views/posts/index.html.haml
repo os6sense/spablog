@@ -1,0 +1,26 @@
+- content_for :navigation do
+  = Post.new.decorate.admin_buttons(:new)
+
+.container-fluid
+  .row
+    .col-md-12
+      %p#notice= notice
+  - @posts.each do |post|
+    .row
+      .container.post
+        .row
+          .col-md-9.title
+            = post.title.html_safe
+          .col-md-3.pull-right
+            = (d = post.publication_date) ? d.to_s(I18n.t('date')) : 'unpublished'
+        .row
+          .col-md-12
+            = post.content.html_safe
+        .row
+          .col-md-8
+          .col-md-4
+            .pull-right
+              = post.user_buttons(:view)
+              = post.admin_buttons([:change, :delete])
+    %br/
+

@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Spablog
+
+    %link{href: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", :rel => "stylesheet"}/
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    
+    %script{src: 'https://code.jquery.com/jquery-2.1.4.min.js'}
+    %script{src: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"}
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    - if admin_signed_in?
+      %nav.navbar.navbar-default.navbar-fixed-top
+        .container-fluid
+          .collapse.navbar-collapse
+            .nav.navbar-nav.navbar-left
+              = yield :navigation
+            .nav.navbar-nav.navbar-right
+              = admin_signed_in? ? current_admin.decorate.nav_bar : nil
+
+    .container-fluid
+      .row
+        .col-md-3#leftCol
+          = render 'layouts/sidebar'
+        .col-md-9
+          = yield
+

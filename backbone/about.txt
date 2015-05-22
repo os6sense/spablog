@@ -1,0 +1,13 @@
+
+A version of the site that uses backbone. Data is aquired from the rest api
+and individual posts populated.
+
+The basic concept is to try and create a data rich view of a blog for 4-8K
+displays rather than worrying about the small screen overly. In addition this
+version should be visually rich, making advanced use of CSS 3D and the canvas
+element. Experimentation is good! 
+
+I don't know what the "rails way" is of doing this and am actually trying to
+see what the "JavaScript Way" is instead hence apart from the fact that the
+api is provided via Rails, the backbone version should be viewed as 
+"independant" as should the knockout, react and angular versions.

@@ -1,0 +1,15 @@
+- cache('archived_posts', skip_digest: true) do
+  .archive
+    - archive_list = Post.archive_list
+    - archive_list.each_key do | year |
+      %ul{class: 'year'}
+        %li
+          = year
+          - archive_list[year].each_key do | month |
+            %ul
+              %li
+                = Date::MONTHNAMES[month]
+                %ul{class: 'month'}
+                  - archive_list[year][month].each do | post |
+                    %li
+                      %a{href: post_url(post), class: 'link' }= post.title 
