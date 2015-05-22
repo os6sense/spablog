@@ -2,12 +2,13 @@
   .archive
     - archive_list = Post.archive_list
     - archive_list.each_key do | year |
-      %ul{class: 'year'}
-        %li
-          = year
+      %ul{class: 'year menu'}
+        %li{id: "menu_#{year}"}
+          %h2
+            %a{href: "#menu_#{year}"}= year
           - archive_list[year].each_key do | month |
-            %ul
-              %li
+            %ul{class: "month menu"}
+              %li{id: "#{month}"}
                 = Date::MONTHNAMES[month]
                 %ul{class: 'month'}
                   - archive_list[year][month].each do | post |

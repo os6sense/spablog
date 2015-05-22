@@ -4,6 +4,11 @@
 //= require_tree .
         
 $(document).ready(function() {
+
+  
+  return;
+  // I'm not too happy with this as of yet.
+
   /* activate sidebar */
   $('#sidebar').affix({
     offset: {

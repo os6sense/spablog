@@ -1,8 +1,5 @@
 - cache('recent_posts', skip_digest: true) do
-  %ul
-    %li 
-      %a{href: posts_url, class: 'recent_link' } Home
-    .recent_posts
+  %ul.recent_posts
     - Post.published.recent.each do | post |
       %li
         %a{href: post_url(post), class: 'recent_link' }= post.title

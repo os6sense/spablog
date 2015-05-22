@@ -17,3 +17,28 @@ body { padding-top:70px}
 
 .post {}
 .post .title { font-size: 20px; }
+
+.search { 
+  margin-bottom: 10px; 
+  margin-left: 10px;
+}
+
+.recent_posts {
+  list-style: none;
+  -webkit-padding-start: 0px; 
+}
+
+.archive { }
+.archive ul { 
+  list-style: none; 
+  -webkit-padding-start: 0px; 
+}
+.archive .month {
+  -webkit-padding-start: 12px; 
+}
+.archive .year li h2 { font-size: 18px; }
+
+.logo { width: 100%; margin-left: 60px; } 
+.logo .title { font-size: 24px; } }
+
+.sidebar {width: 10px; }

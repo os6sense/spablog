@@ -31,5 +31,6 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'guard-livereload', '~> 2.4', require: false # https://github.com/guard/guard-livereload
 end
 
