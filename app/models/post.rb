@@ -5,6 +5,12 @@ class Post < ActiveRecord::Base
   scope :published, -> { where(published: true) }
   scope :recent, -> { by_publication_date.limit(5) }
 
+  def summary(ml = nil)
+    ml = [256, 512, 768, 1024, 1280].sample(1).first if ml.nil?
+
+    Truncato.truncate(self.content, max_length: ml, count_tags: false)
+  end
+
   private
 
   def set_publication_date

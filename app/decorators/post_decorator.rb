@@ -5,9 +5,9 @@ class PostDecorator < Draper::Decorator
     (a = *actions).reduce(h.tag("span")) do | tag, action |
       tag << case action
       when :view
-        h.link_to('view', object, class: 'btn btn-default')  << ' '
+        h.link_to('READ MORE', object, class: 'btn btn-default')  << ' '
       when :back
-        h.link_to('back', h.posts_path, class: 'btn btn-default')
+        h.link_to('BACK', h.posts_path, class: 'btn btn-default')
       end
     end
   end

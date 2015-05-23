@@ -17,8 +17,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'                  # https://github.com/james2m/seedbank
 
 gem 'sdoc', '~> 0.4.0', group: :doc
-
 gem 'seedbank'                            # https://github.com/james2m/seedbank
+gem 'truncato'
 
 group :development, :test do
   gem 'faker'                             # https://github.com/stympy/faker

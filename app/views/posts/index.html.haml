@@ -2,25 +2,19 @@
   = Post.new.decorate.admin_buttons(:new)
 
 .container-fluid
-  .row
-    .col-md-12
-      %p#notice= notice
-  - @posts.each do |post|
+  - if notice
     .row
-      .container.post
-        .row
-          .col-md-9.title
-            = post.title.html_safe
-          .col-md-3.pull-right
-            = (d = post.publication_date) ? d.to_s(I18n.t('date')) : 'unpublished'
-        .row
-          .col-md-12
-            = post.content.html_safe
-        .row
-          .col-md-8
-          .col-md-4
-            .pull-right
-              = post.user_buttons(:view)
-              = post.admin_buttons([:change, :delete])
-    %br/
+      .col-md-12.col-xs-12
+        %p#notice= notice
 
+  - @remaining_cols = 0
+  - @posts.each do |post|
+    - if @remaining_cols <= 0
+      - @remaining_cols = 12
+      .row
+
+    - @width = rand(3) + 2
+    - @remaining_cols -= @width
+
+    %div{ class: "col-md-#{@width}" }
+      = render partial: 'posts/post', locals: { post: post}

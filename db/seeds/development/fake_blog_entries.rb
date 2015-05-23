@@ -36,7 +36,7 @@ class FakePost
 
   def content
     tmp = ""
-    (rand(40)+1).times do 
+    (rand(30)+1).times do 
       tmp << generate_paragraph
     end
     tmp
@@ -48,7 +48,7 @@ class FakePost
   end
 
   def rand_image
-    case rand(10)
+    case rand(20)
     when 1
       "<img src=\"#{Faker::Company.logo}\"/>"
      when 2
@@ -63,7 +63,7 @@ class FakePost
       rand_image,
       Faker::Hacker.say_something_smart,
       Faker::Company.bs,
-      Faker::Lorem.paragraph(rand(25) + 1),
+      Faker::Lorem.paragraph(rand(5) + 1),
       '</p>'].join ' '
   end
 end
