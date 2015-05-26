@@ -1,0 +1,27 @@
+- cols = local_assigns.fetch(:cols, 4)
+- h_layout_val = 3
+
+- random_selector = rand(h_layout_val) + 1
+
+- random_selector = 1 if local_assigns.fetch(:hsplit, false)
+
+- case random_selector
+- when 1
+  .row
+    - posts.each do | post |
+      .col-md-4
+        = render partial: 'posts/post', locals: { post: post, cols: cols}
+- when 2 
+  - # #   or   ###
+  - ###        # #
+  - views = [-> { render partial: 'layouts/layout_1', locals: { posts: posts.slice(0, 1), cols: 6} }, 
+             -> { render partial: 'layouts/layout_2', locals: { posts: posts.slice(1, 2), hsplit: true, cols: 6} }]
+  - views.shuffle.each do | v |
+    = v.call()
+- when 3
+  .row.row-same-height.row-full-height
+    .col-md-6
+      = render partial: 'posts/post', locals: { post: posts.slice(0, 1)[0], cols: 6, rows: 2}
+    .col-md-6
+      = render partial: 'posts/post', locals: { post: posts.slice(1, 1)[0], cols: 6}
+      = render partial: 'posts/post', locals: { post: posts.slice(2, 1)[0], cols: 6}

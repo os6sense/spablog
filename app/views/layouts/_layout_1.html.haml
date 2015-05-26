@@ -1,0 +1,4 @@
+- cols = local_assigns.fetch(:cols, 12)
+.row
+  .col-md-12
+    = render partial: 'posts/post', locals: { post: posts[0], cols: cols}

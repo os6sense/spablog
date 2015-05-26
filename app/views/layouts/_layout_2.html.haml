@@ -1,0 +1,14 @@
+- cols = local_assigns.fetch(:cols, 6)
+- hsplit = local_assigns.fetch(:hsplit, false)
+
+- h_layout_val = 2
+- random_selector = rand(h_layout_val) + 1
+
+- if random_selector == 1 || hsplit
+  .row
+    - posts.each do | post |
+      .col-md-6
+        = render partial: 'posts/post', locals: { post: post, cols: cols}
+- else
+  - posts.each do | post |
+    = render partial: 'layouts/layout_1', locals: { posts: [post], cols: 12}

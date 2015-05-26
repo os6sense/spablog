@@ -7,14 +7,4 @@
       .col-md-12.col-xs-12
         %p#notice= notice
 
-  - @remaining_cols = 0
-  - @posts.each do |post|
-    - if @remaining_cols <= 0
-      - @remaining_cols = 12
-      .row
-
-    - @width = rand(3) + 2
-    - @remaining_cols -= @width
-
-    %div{ class: "col-md-#{@width}" }
-      = render partial: 'posts/post', locals: { post: post}
+  = PostsDecorator.decorate(@posts).layout(9)

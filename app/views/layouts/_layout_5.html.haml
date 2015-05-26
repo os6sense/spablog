@@ -1,0 +1,24 @@
+- h_layout_val = 5
+- random_selector = rand(h_layout_val) + 1
+
+- views = [-> { render partial: 'layouts/layout_1', locals: { posts: posts.slice(0, 1), cols: 4} },
+           -> { render partial: 'layouts/layout_2', locals: { posts: posts.slice(1, 2), hsplit: true, cols: 4} },
+           -> { render partial: 'layouts/layout_1', locals: { posts: posts.slice(3, 1), cols: 4} },
+           -> { render partial: 'layouts/layout_1', locals: { posts: posts.slice(4, 1), cols: 4} }]
+
+- if random_selector == 1 || local_assigns.fetch(:hsplit, false)
+  .row
+    - make_wider = rand(h_layout_val) 
+
+    - posts.each_with_index do | post, idx |
+      - width = (idx == make_wider ? 4 : 2)
+      %div{ class: "col-md-#{width}"  }
+        = render partial: 'posts/post', locals: { post: post, cols: width }
+- elsif random_selector == 2
+  - views.shuffle.each do | v |
+    = v.call()
+- elsif random_selector == 3
+  .row
+    - views.shuffle.each do | v |
+      .col-md-4
+        = v.call()

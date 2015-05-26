@@ -48,6 +48,7 @@ class FakePost
   end
 
   def rand_image
+    return ""
     case rand(20)
     when 1
       "<img src=\"#{Faker::Company.logo}\"/>"
