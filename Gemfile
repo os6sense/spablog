@@ -20,7 +20,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'seedbank'                            # https://github.com/james2m/seedbank
 gem 'truncato'
 
+group :development do
+  gem 'capistrano-rails', '~> 1.1.1'
+end
+
 group :development, :test do
+
   gem 'faker'                             # https://github.com/stympy/faker
   gem 'awesome_print'
   gem 'rspec-rails', '~> 3.0'

@@ -6,8 +6,10 @@
     .col-md-9.col-xs-9.title
       = post.title.html_safe
     .col-md-3.col-xs-3.date
-      .pull-right
-        = (d = post.publication_date) ? d.to_formatted_s(:short) : 'unpublished'
+      .row
+        = (d = post.publication_date) ? d.strftime("%d %M %Y") : 'unpublished'
+      .row
+        = (t = post.publication_date) ? t.to_formatted_s(:time) : ''
   .row.summary{ style: "#{rows == 2 ? 'height: 662px;' : ''} " }
     .col-md-12.col-xs-12
       - if rows == 2
@@ -27,25 +29,7 @@
         - else
           = post.summary(512).html_safe
   .row.footer
-    .container-fluid
-      .col-md-8.col-xs-8
-        .row
-          .col-md-12.col-xs-12.tags
-            %b 
-              TAGS: FRED BOB RINGO
-            %i
-              COLS
-              = cols
-        .row
-          .col-md-6.col-xs-6.views
-            %b
-              VIEWS: 
-            = "#{rand(20000)}"
-          .col-md-6.col-xs-6.comments
-            %b 
-              COMMENTS:
-            = "#{rand(20000)}"
-
-      .col-md-4.col-xs-4
-        = post.user_buttons(:view)
-        = post.admin_buttons([:change, :delete])
+    .col-md-8.col-xs-8
+    .col-md-4.col-xs-4
+      = post.user_buttons(:view)
+      = post.admin_buttons([:change, :delete])
