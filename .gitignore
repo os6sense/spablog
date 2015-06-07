@@ -18,4 +18,4 @@
 
 bower_components
 node_modules
-public/assets
+/public/assets/*

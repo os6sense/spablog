@@ -22,6 +22,8 @@ gem 'truncato'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-passenger'
+  gem 'capistrano-bundler'
 end
 
 group :development, :test do
