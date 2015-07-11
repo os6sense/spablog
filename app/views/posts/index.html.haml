@@ -7,4 +7,11 @@
       .col-md-12.col-xs-12
         %p#notice= notice
 
-  = PostsDecorator.decorate(@posts).layout(9)
+  = PostsDecorator.decorate(@posts).layout(6)
+
+%dialog
+  %button{id: 'close'}
+    X
+  %div{id: 'post_content'}  
+  %button{id: 'close'}
+    Close

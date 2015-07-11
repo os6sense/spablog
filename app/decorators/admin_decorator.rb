@@ -6,7 +6,7 @@ class AdminDecorator < Draper::Decorator
 
     h.content_tag(:div, class: :nav_bar) do
       h.content_tag(:span, class: :sign_out) do
-        h.link_to('sign out', h.destroy_admin_session_path, method: :delete)
+        h.link_to('SIGN OUT', h.destroy_admin_session_path, class: :nav_item, method: :delete)
       end
     end
   end

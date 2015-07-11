@@ -7,27 +7,12 @@
       = post.title.html_safe
     .col-md-3.col-xs-3.date
       .row
-        = (d = post.publication_date) ? d.strftime("%d %M %Y") : 'unpublished'
+        = post.formatted_date
       .row
-        = (t = post.publication_date) ? t.to_formatted_s(:time) : ''
+        = post.formatted_time
   .row.summary{ style: "#{rows == 2 ? 'height: 662px;' : ''} " }
     .col-md-12.col-xs-12
-      - if rows == 2
-        = post.summary(1276).html_safe
-      - else
-        - case cols   
-        - when 2
-          = post.summary(512).html_safe
-        - when 3
-          = post.summary(512).html_safe
-        - when 4
-          = post.summary(512).html_safe
-        - when 6
-          = post.summary(768).html_safe
-        - when 12
-          = post.summary(1276).html_safe
-        - else
-          = post.summary(512).html_safe
+      = post.formatted_summary(rows, cols)
   .row.footer
     .col-md-8.col-xs-8
     .col-md-4.col-xs-4
