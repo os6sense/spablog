@@ -15,10 +15,11 @@
      role: 'dialog',
      'aria-hidden': 'true'}
 
-  %div{ class: 'modal-dialog' }
+  %div{ class: 'modal_dialog' }
 
-    %div{id: 'modal_content'}  
+    %div{class: 'modal_content'}  
       %div{id: 'post_content'}  
 
-    %button{id: 'close_btn', 'data-dismiss': 'modal'}
-      CLOSE
+    %div{class: 'modal_footer'}  
+      %button{id: 'close_btn', 'data-dismiss': 'modal'}
+        I'm Done! Bore me no more!

@@ -6,7 +6,7 @@
     .col-md-12
       %p#notice= notice
   .row
-    .col-md-9
+    .col-md-9.post_title
       = @post.title.html_safe
     .col-md-3.pull-right
       = @post.created_at.to_s(I18n.t('date'))
