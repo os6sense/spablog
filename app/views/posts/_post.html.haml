@@ -1,20 +1,21 @@
 - rows = local_assigns.fetch(:rows, 1)
 - cols = local_assigns.fetch(:cols, 'undefined')
 
-.container-fluid.post{ style: "#{rows == 2 ? 'height: 762px;' : ''} " }
+.container-fluid.post{ style: "#{post.calculate_post_height(rows, cols)} " }
   .row.header
-    .col-md-9.col-xs-9.title
+    .col-md-12.col-xs-12.title
       = post.title.html_safe
-    .col-md-3.col-xs-3.date
-      .row
-        = post.formatted_date
-      .row
-        = post.formatted_time
-  .row.summary{ style: "#{rows == 2 ? 'height: 662px;' : ''} " }
+  .row.summary{ style: "#{post.calculate_summary_height(rows, cols)} " }
     .col-md-12.col-xs-12
       = post.formatted_summary(rows, cols)
   .row.footer
-    .col-md-8.col-xs-8
-    .col-md-4.col-xs-4
-      = post.user_buttons(:view)
-      = post.admin_buttons([:change, :delete])
+    .col-md-6.col-xs-6
+      .date
+        = post.formatted_date
+    .col-md-6.col-xs-6
+      .more
+        = post.user_buttons(:view)
+      - if admin_signed_in?
+        .row.admin_functions
+          .col-md-12.col-xs-12
+            = post.admin_buttons([:change, :delete])

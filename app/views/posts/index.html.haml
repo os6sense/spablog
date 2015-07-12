@@ -9,9 +9,16 @@
 
   = PostsDecorator.decorate(@posts).layout(6)
 
-%dialog
-  %button{id: 'close'}
-    X
-  %div{id: 'post_content'}  
-  %button{id: 'close'}
-    Close
+%div{ id: 'fsModal', 
+     class: 'modal animated bounceIn',
+     tabindex: '-1',
+     role: 'dialog',
+     'aria-hidden': 'true'}
+
+  %div{ class: 'modal-dialog' }
+
+    %div{id: 'modal_content'}  
+      %div{id: 'post_content'}  
+
+    %button{id: 'close_btn', 'data-dismiss': 'modal'}
+      CLOSE

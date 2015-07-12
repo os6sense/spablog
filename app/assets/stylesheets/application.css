@@ -12,19 +12,19 @@
 body { 
   padding-top:10px; 
   background: #ff9000 ; 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 } 
+
+.navbar { border-bottom: 0; }
 
 .nav_item {
   float: left;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
   letter-spacing: 4px;
   font-weight: bold;
   margin-right: 40px;
-  margin-left: 40px;
-  margin-top: 10px;
-  width: 250px;
-
+  margin-left: 220px;
+  margin-top: 15px;
   color: #ff9000;
   font-size: 16px; 
   text-shadow: 1px 1px 1px #000, 
@@ -61,27 +61,6 @@ body {
   margin: 0; 
 }
 
-dialog {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 6px;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: scroll;
-}
-
-dialog::backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
 .md-effect-1 .md-content {
   -webkit-transform: scale(0.7);
   -moz-transform: scale(0.7);
@@ -102,15 +81,10 @@ dialog::backdrop {
 }
 
 .logo {
-  /*margin-left: 10px;*/
-  /*margin-top: 70%;*/
-  /*margin-bottom: 0%;*/
-  /*width: 120px;*/
-  /*height: 120px;*/
-  /*border-radius: 50%;*/
-  /*box-shadow: 0 0 8px rgba(0, 0, 0, .8);*/
-  /*-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);*/
-  /*-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);*/
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .logo img { 
@@ -124,27 +98,69 @@ dialog::backdrop {
   border-bottom: 2px solid #fef400;
   color: #da2140;
   width: 100%;
-  font-size: 0.90vw; 
+  font-size: 1.09vw; 
   font-weight: bold;
   padding-top: 7px;
   padding-bottom: 5px;
-  white-space:nowrap;
+  white-space: nowrap;
   margin-left: 12px;
   margin-top: 6px;
   letter-spacing: 4px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 } 
 
 .logo .byline { 
   margin-left: 29px; 
   font-style: italic; 
   font-size: 0.6vw;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .search { 
   margin-bottom: 10px; 
   margin-left: 0;
+}
+
+.col-md-12 { padding-right: 5px; padding-left: 5px; }
+.col-md-4 .row  { padding-right: 5px; padding-left: 15px; }
+.col-md-6 .row { padding-right: 5px; padding-left: 5px; }
+.col-md-6 { padding-right: 5px; padding-left: 5px; }
+.col-md-4 { padding-right: 5px; padding-left: 5px; }
+.col-md-3 { padding-right: 5px; padding-left: 5px; }
+.col-md-2 { padding-right: 5px; padding-left: 5px; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  left: 0;
+  overflow: hidden;
+}
+
+.modal-dialog {
+  height: 90%;
+  left: 10px;
+  right: 10px;
+  width: 100%;
+  background: #FFF;
+  padding: 20px;
+  overflow-y: auto;
+  background: #ff9000;
+   -moz-border-radius: 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+ /*background: #b87333;*/
+}
+
+.modal-content {
+  border: 2px solid #000;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.modal-body {
+  position: absolute;
+  width: 100%;
 }
 
 .post { 
@@ -154,18 +170,19 @@ dialog::backdrop {
   border-radius: 10px 10px 0px 0px;
   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
   color: #000;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 10px;
   height: 376px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .post .summary {
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-top: 10px;
-  font-family: Verdana;
-  line-height: 1.5em;
-  color: rgb(69,54,37);
+  color: rgb(69, 54, 37);
   overflow: hidden;
-  height: 276px;
+  /*height: 296px;*/
+  /*height: auto;*/
 }
 
 .post .header {
@@ -177,8 +194,17 @@ dialog::backdrop {
   font-weight: bold;
   text-transform: uppercase;
   overflow: hidden;
-  height: 60px;
+  height: 40px;
   border-bottom: 1px solid #ff9000;
+}
+
+.post_admin_btn { display: block; float: right;  }
+
+.post .footer {
+  /*position: absolute;*/
+  height: 20px;
+  left: 15px;
+  right: 15px;
 }
 
 .post .title { 
@@ -187,28 +213,21 @@ dialog::backdrop {
   text-shadow: 1px 1px 1px #000, 
                2px 2px 2px #da2140;; 
 }
-.post .date {
-  padding-top: 0;
+
+.footer .date {
   font-size: 10px; 
+  margin-top: 5px;
 }
 
-.post .btn { 
-  float: right;
+.post .more { float: right; }
+
+.read_more_btn { 
+  position: relative;
   font-size: 12px;
   letter-spacing: 4px;
   font-weight: bold;
-  border: 1px black solid; 
   color: black;
-  background: #ff9000; 
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-  margin-right: 2px;
 } 
-
-.post .footer {
-  height: 30px;
-}
-
-.footer .col-md-2, .col-md-3, .col-md-4 { }
 
 .post img { 
   width: 150px; 

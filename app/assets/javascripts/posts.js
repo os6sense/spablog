@@ -1,20 +1,14 @@
 /*global $*/
 /*jslint browser: true, devel: true*/
 $(function() {
-  var dialog = document.querySelector('dialog');
-
-  $(".read_more_button").click(function(event)
+  $('.read_more_btn').click(function(event)
   {
     event.preventDefault();
-    var link = $(this).attr('href');
+    var link = "http://localhost:3000" + $(this).attr('href');
 
-    $("#post_content").load(link, function(){
-      $("#post_content").fadeIn();
-      dialog.showModal();
+    $('#post_content').load(link, function(){
+      $('#post_content').fadeIn();
     });                        
-  });                        
 
-  $('#close').on('click', function() {
-    dialog.close();
-  });
+  });                        
 });

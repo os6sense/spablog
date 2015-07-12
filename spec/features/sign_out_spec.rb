@@ -19,16 +19,16 @@ describe 'devise based admins', type: :feature, driver: :poltergeist  do
     expect(page).to have_content('Signed in successfully.')
   end
 
-  it 'signs in as an admin' do
-    Warden.test_mode!
-    login_as(@admin, :scope => :admin)
-    Warden.test_reset!
-  end
+  #it 'signs in as an admin' do
+    #Warden.test_mode!
+    #login_as(@admin, scope: :admin)
+    #Warden.test_reset!
+  #end
 
 
   context 'when an admin is signed in' do
     it 'signs an admin out' do
-      click_link_or_button 'sign out'
+      click_link_or_button 'SIGN OUT'
       expect(page).to have_content('Signed out successfully.')
     end
   end

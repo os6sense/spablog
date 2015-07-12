@@ -1,13 +1,16 @@
 class PostDecorator < Draper::Decorator
+  include ActionView::Helpers::DateHelper
   delegate_all
 
   def user_buttons(actions)
     (a = *actions).reduce(h.tag('span')) do |tag, action|
       tag << case action
              when :view
-               h.link_to('READ MORE', object,
+               h.link_to('MORE ...', object,
                          id: "post_#{id}",
-                         class: 'btn btn-default read_more_button')  << ' '
+                         'data-toggle': 'modal',
+                         'data-target': '#fsModal',
+                         class: 'read_more_btn')  << ' '
              when :back
                #h.link_to('CLOSE', h.posts_path,
                          #class: 'btn btn-default')
@@ -24,17 +27,33 @@ class PostDecorator < Draper::Decorator
                h.link_to('NEW POST', h.new_post_path, class: :nav_item)
              when :change
                h.link_to('CHANGE', h.edit_post_path(object),
-                         class: :'btn btn-default') << ' '
+                         class: :'post_admin_btn') << ' '
              when :delete
                h.link_to('DELETE', object, method: :delete,
-                                           class: 'btn btn-default',
+                                           class: 'post_admin_btn',
                                            data: { confirm: 'Are you sure?' })
              end
     end
   end
 
+  def calculate_post_height(rows, cols)
+    height = (rows == 2 ? 762 : 376)
+    "height: #{height}px;"
+  end
+
+  def calculate_summary_height(rows, cols)
+    height = (rows == 2 ? 702 : 316)
+    #height -= 10 if h.admin_signed_in?
+    "height: #{height}px;"
+  end
+
   def formatted_date
-    (d = post.publication_date) ? d.strftime('%d %M %Y') : 'unpublished'
+    if (d = post.publication_date)
+      #  d.strftime('%d %M %Y') :
+      distance_of_time_in_words(Date.today(), d) << ' ago'
+    else
+      'unpublished'
+    end
   end
 
   def formatted_time
