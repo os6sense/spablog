@@ -3,7 +3,7 @@ default: &default
   pool: 5
   timeout: 5000
   username: spablog
-  password: <%= ENV['DB_PASSWORD'] %> # password1
+  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
