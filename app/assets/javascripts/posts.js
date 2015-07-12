@@ -4,10 +4,14 @@ $(function() {
   $('.read_more_btn').click(function(event)
   {
     event.preventDefault();
-    var link = "http://localhost:3000" + $(this).attr('href');
+    var link = location.protocol + '//' + 
+               location.hostname + ':' + 
+               location.port + 
+               $(this).attr('href');
 
+   $('.modal_dialog').hide();
     $('#post_content').load(link, function(){
-      $('#post_content').fadeIn();
+      $('.modal_dialog').fadeIn('slow');
     });                        
 
   });                        
